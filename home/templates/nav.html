@@ -1,0 +1,15 @@
+
+<div class="header">
+	<a href="/"><span>{{ pagetitle }}</span></a>
+</div>
+
+<div class="stripes"><span></span></div>
+
+<div class="nav">
+    {% for item in navitems %}
+    <a href="{{ item.url }}">{{ item.title }}</a>
+    {% endfor %}
+	<div class="clearer"><span></span></div>
+</div>
+
+<div class="stripes"><span></span></div>

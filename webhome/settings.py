@@ -37,6 +37,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'debug_toolbar',
+    'home',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -101,7 +104,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT=os.path.join(BASE_DIR, 'static')
-#STATICFILES_DIRS = (
+#TATICFILES_DIRS = (
 #    os.path.join(BASE_DIR, 'static'),
 #)
 
+META = {
+    "description": "azuer88's place in cyberspace",
+    "author": "Blue Cuenca",
+    "keywords": "azuer88, home, blue,",
+}
+
+
+MEDIA_URL="/media/"
+MEDIA_ROOT=os.path.join(BASE_DIR, 'media')

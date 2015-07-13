@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+{% load static from staticfiles %}
+<head>
+    {% block meta-block %}
+    {% endblock %}
+</head>
+
+<!-- default margin = default layout -->
+<body style="margin: 0 12%;">
+
+<div class="container">
+{% block navbar-block %}
+{% endblock %}
+	<div class="main">
+	
+		<div class="left">
+
+			<div class="content">
+{% block content %}
+{% endblock %}
+			</div>
+
+		</div>
+
+		<div class="right">
+
+			<div class="subnav">
+{% block subnav %}
+{% endblock %}
+			</div>
+
+		</div>
+
+		<div class="clearer"><span></span></div>
+
+	</div>
+
+	<div class="footer">
+
+{% block footer %}
+{% endblock %}
+
+	</div>
+
+</div>
+
+</body>
+
+</html>

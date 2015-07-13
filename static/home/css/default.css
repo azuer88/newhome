@@ -175,11 +175,11 @@ h2 {
 	background: #222;
 }
 
-.col3,.col3center {
+.col3 {
 	float: left;
-	width: 31%;
+	width: 30%;
+	padding: 5px;
 }
-.col3center {margin: 0 3%;}
 
 /* bottom */
 .bottom {
@@ -188,3 +188,9 @@ h2 {
 	font-size: 1.1em;
 }
 .bottom a {color: #888;}
+
+#me-photo {
+    height: 96px;
+    width: 96px;
+    float: right;
+}

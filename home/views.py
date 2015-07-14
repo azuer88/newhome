@@ -14,6 +14,8 @@ def navitems():
         {"url": reverse('home-index'), "title": "Home"},
         {"url": reverse('home-index'), "title": "Home"},
     ]
+
+
 def about_me():
     active_news_with_order = News.objects.filter(active=True, order__gte=1).order_by('order')
     about_me_record = list(active_news_with_order[:1])
@@ -21,13 +23,18 @@ def about_me():
         return about_me_record[0]
     return None
 
-# Create your views here.
+
+def get_news():
+    return News.objects.filter(active=True, order=0).order_by('-pub_date')
+
+
 def index(request):
     me = about_me()
     mydict = {
         "pagetitle": "azuer88.org",
         "META": settings.META,
         "navitems": navitems(),
+        "news": get_news(),
     }
     if me:
         mydict['aboutme'] = me

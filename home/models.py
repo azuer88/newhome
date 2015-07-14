@@ -10,7 +10,7 @@ def smart_truncate(content, length=100, suffix='...'):
 class News(models.Model):
     title = models.CharField(max_length=30)
     content = models.TextField()
-    image = models.ImageField()
+    image = models.ImageField(blank=True, null=True)
     order = models.IntegerField(default=0)
     active = models.BooleanField(default=True)
     pub_date = models.DateField(default=datetime.now)
@@ -24,3 +24,5 @@ class News(models.Model):
     class Meta:
         verbose_name_plural = "News"
 
+class Media(models.Model):
+    pass

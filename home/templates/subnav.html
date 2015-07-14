@@ -1,16 +1,33 @@
 {% load static from staticfiles %}
-{
+{% load markdown_deux_tags %}
 
-<h1>About me</h1>
-<img id="me-photo" src="{% static 'img/me.png' %}" alt="me">
-<p> If I must..</p>
-<p>I am lazy, a miser.  Much like Shikamaru Nara, except without the genius part.
-</p>
-<p>I prefer to find easier ways of doing things, and tend to view the world obliquely.</p>
-<p>What that means, ... is too much bothersome to explain.</p>
+{% if aboutme %}
+<!-- aboutme -->
+<h1>{{ aboutme.title }}</h1>
+{% if aboutme.image %}
+<img id="me-photo" src="{{ aboutme.image.url }}" alt="me">
+{% endif %}
+{{ aboutme.content | markdown }}
+{% endif %}
 
+{% if news %}
+    {% for n in news %}
+
+        <h1>{{ n.title }}</h1>
+        {% if n.image %}
+        <img class="{% cycle 'news-left-photo' 'news-right-photo'" src="{{ n.image.url }}" alt="n.title">
+        {% endif %}
+
+        {{ n.content | markdown }}
+
+    {% endfor %}
+{% else %}
+<!-- no news, is not so good news -->
+{% endif %}
+
+<h1>Markdwon Cheatsheet</h1>
+{% markdown_cheatsheet %}
 <h1>Under Construction</h1>
-<p></p>
 <ul>
     <li><a href="index.html">consequat molestie</a></li>
     <li><a href="index.html">sem justo</a></li>

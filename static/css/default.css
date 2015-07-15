@@ -62,16 +62,20 @@ h2 {
 	background: #111;
 	border-bottom: 1px solid #333;
 	font: normal 2em sans-serif;
-	height: 120px;
+	height: 3em;
+}
+.header img {
+	float: left;
+	padding: 0.5em 0.5em 0.5em 0.5em;
 }
 .header a {
 	color: #888;
 	display: block;
-	line-height: 120px;
+	line-height: 3em;
 	text-decoration: none;
 	width: 100%;
 }
-.header span {padding-left: 32px;}
+.header span {padding-left: 6px;}
 .header a:hover {
 	background: #191919;
 	color: #BBB;

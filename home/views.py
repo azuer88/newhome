@@ -3,18 +3,45 @@ from django.template import RequestContext
 from django.conf import settings
 from django.core.urlresolvers import reverse
 
-from models import News
+from models import News, Article, Section
 
+def get_context(request, extra=None):
+    me = about_me()
+    mydict = {
+        "pagetitle": "azuer88.org",
+        "META": settings.META,
+        "navitems": navitems(),
+        "news": get_news(),
+        "articles": get_articles()
+    }
+    if extra:
+        mydict.update(extra)
+    if me:
+        mydict['aboutme'] = me
+
+    return RequestContext(request, mydict)
+
+def section(request, section_name):
+    context = get_context(request,
+        {
+            "articles": "",
+            "pagetitle": "azuer88.org - {}".format(section_name),
+        }
+    )
+    return render(request, 'index.html', context=context)
 
 def navitems():
-    return [
-        {"url": reverse('home-index'), "title": "Home"},
-        {"url": reverse('home-index'), "title": "Home"},
-        {"url": reverse('home-index'), "title": "Home"},
-        {"url": reverse('home-index'), "title": "Home"},
-        {"url": reverse('home-index'), "title": "Home"},
-    ]
-
+    sections = Section.objects.filter(active=True).order_by('order', 'name')
+    items = [{"url": reverse('home-index'), "title": "Home"},]
+    for s in sections:
+        if s.article_set.count():
+            items.append(
+                {
+                    "url": reverse("home-section",args=[s.name.lower()]),
+                    "title": s.name,
+                }
+            )
+    return items
 
 def about_me():
     active_news_with_order = News.objects.filter(active=True, order__gte=1).order_by('order')
@@ -25,19 +52,12 @@ def about_me():
 
 
 def get_news():
-    return News.objects.filter(active=True, order=0).order_by('-pub_date')
+    return News.objects.filter(active=True, order=0).order_by('-pub_date')[:5]
+
+def get_articles():
+    return Article.objects.filter(active=True).order_by('-pub_date')[:5]
 
 
 def index(request):
-    me = about_me()
-    mydict = {
-        "pagetitle": "azuer88.org",
-        "META": settings.META,
-        "navitems": navitems(),
-        "news": get_news(),
-    }
-    if me:
-        mydict['aboutme'] = me
-
-    context = RequestContext(request, mydict)
+    context = get_context(request)
     return render(request, 'index.html', context)

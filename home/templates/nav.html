@@ -1,6 +1,9 @@
-
+{% load static from staticfiles %}
 <div class="header">
-	<a href="/"><span>{{ pagetitle }}</span></a>
+	<a href="/">
+        <img id="small-logo" src="{% static 'img/logo-small.png' %}" alt="logo">
+        <span>{{ pagetitle }}</span>
+    </a>
 </div>
 
 <div class="stripes"><span></span></div>

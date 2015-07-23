@@ -42,7 +42,12 @@ class Article(models.Model):
     active = models.BooleanField(default=True)
     section = models.ForeignKey(Section, default=None)
 
+    slug = models.SlugField(unique=True)
     tags = TaggableManager()
+
+    @models.permalink
+    def get_absolute_url(self):
+        return 'home-article', (self.slug,)
 
     def __unicode__(self):
         return "{} - {}".format(self.title, self.get_blurb())

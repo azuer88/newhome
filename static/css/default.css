@@ -8,6 +8,10 @@ URL: http://arcsin.se
 Feel free to use and modify but please provide credits.
 #############################################################*/
 
+html {
+    height: 100%;
+}
+
 /* standard elements */
 * {
 	margin: 0;
@@ -54,8 +58,8 @@ h2 {
 	background: #333 url(/static/img/stripe.gif);
 	height: 6px;
 }
-.left {float: left;}
-.right {float: right;}
+.left {float: left; height: 100%;}
+.right {float: right; height: 100%;}
 
 /* header */
 .header {
@@ -92,8 +96,16 @@ h2 {
 	border-bottom: 1px solid #2A2A2A;
 	border-left: 1px solid #2A2A2A;
 }
-.main .left {width: 64%;}
-.main .right {width: 36%;}
+
+.main .left {
+    width: 64%;
+    height: 100%;
+}
+
+.main .right {
+    width: 36%;
+    height: 100%;
+}
 
 .content {
 	border-left: 1px solid #444;
@@ -136,6 +148,8 @@ h2 {
 	border: 1px solid #1E1E1E;
 	border-top-color: #444;	
 	padding: 12px;
+	height: 100%;
+	max-height: 100%;
 }
 .subnav h1 {padding-top: 8px;}
 .subnav ul {margin: 0;}

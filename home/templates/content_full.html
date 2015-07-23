@@ -1,0 +1,12 @@
+{% load markdown_deux_tags %}
+
+{% for article in articles %}
+    <h1>{{ article.title }}</h1>
+    <div class="descr">{{ article.pub_date }}</div>
+    {{ article.content | markdown }}
+
+    {% for tag in article.tags.all %}
+    {{ tag }}
+    {% endfor %}
+
+{% endfor %}

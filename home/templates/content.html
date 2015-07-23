@@ -1,3 +1,17 @@
+{% load markdown_deux_tags %}
+
+{% for article in articles %}
+    <h1><a href="{% url 'home-article' article.slug %}">{{ article.title }}</a></h1>
+    <div class="descr">{{ article.pub_date }}</div>
+    {{ article.teaser | markdown }}
+    <div class="readmore">
+        <a href="{% url 'home-article' article.slug %}">Read More</a>
+    </div>
+    {% for tag in article.tags.all %}
+    {{ tag }}
+    {% endfor %}
+{% endfor %}
+
 <h1>Porttitor posuere</h1>
 <div class="descr">Jun 13, 2006 by Vulputate</div>
 

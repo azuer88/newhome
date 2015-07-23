@@ -5,6 +5,7 @@ from django.core.urlresolvers import reverse
 
 from models import News, Article, Section
 
+
 def get_context(request, extra=None):
     me = about_me()
     mydict = {
@@ -21,10 +22,13 @@ def get_context(request, extra=None):
 
     return RequestContext(request, mydict)
 
+def article(request, article_id):
+    return render(request, 'single_column.html', context=get_context(request))
+
 def section(request, section_name):
     context = get_context(request,
         {
-            "articles": "",
+            "articles": get_articles(),
             "pagetitle": "azuer88.org - {}".format(section_name),
         }
     )
@@ -43,6 +47,7 @@ def navitems():
             )
     return items
 
+
 def about_me():
     active_news_with_order = News.objects.filter(active=True, order__gte=1).order_by('order')
     about_me_record = list(active_news_with_order[:1])
@@ -53,6 +58,7 @@ def about_me():
 
 def get_news():
     return News.objects.filter(active=True, order=0).order_by('-pub_date')[:5]
+
 
 def get_articles():
     return Article.objects.filter(active=True).order_by('-pub_date')[:5]

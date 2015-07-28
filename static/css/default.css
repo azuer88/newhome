@@ -212,3 +212,15 @@ h2 {
     width: 96px;
     float: right;
 }
+
+.news-left-photo {
+	height: 96px;
+	width: 96px;
+	float: left;
+}
+
+.news-right-photo {
+	height: 96px;
+	width: 96px;
+	float: right;
+}

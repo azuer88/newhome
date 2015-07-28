@@ -211,16 +211,19 @@ h2 {
     height: 96px;
     width: 96px;
     float: right;
+    margin: 4px;
 }
 
 .news-left-photo {
 	height: 96px;
 	width: 96px;
 	float: left;
+	margin: 4px;
 }
 
 .news-right-photo {
 	height: 96px;
 	width: 96px;
+	margin: 4px;
 	float: right;
 }

@@ -15,7 +15,7 @@
 
         <h1>{{ n.title }}</h1>
         {% if n.image %}
-        <img class="{% cycle 'news-left-photo' 'news-right-photo'" src="{{ n.image.url }}" alt="n.title">
+        <img class="{% cycle 'news-left-photo' 'news-right-photo'" src="{{ n.image.url }}" alt="n.title" height="96px" width="96px">
         {% endif %}
         {{ n.content | markdown }}
 
